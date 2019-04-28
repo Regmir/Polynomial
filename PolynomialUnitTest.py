@@ -28,10 +28,10 @@ class PolynomialTestCase(unittest.TestCase):
         self.assertEqual(self.p1.__repr__(), "Polynomial[1, 2, 3]")
 
     def test_str(self):
-        self.assertEqual(self.p3.__str__(), "-x^3+2x-4")
+        self.assertEqual(self.p3.__str__(), "-x^3+2x-3")
 
     def test_str2(self):
-        self.assertEqual((self.p3 + 5).__str__(), "-x^3+2x")
+        self.assertEqual((self.p3 + 5).__str__(), "-x^3+2x+2")
 
     def test_sum_polynoms(self):
         self.assertEqual(self.p1 + self.p2, Polynomial([1, -1, 5, -1]))
@@ -43,13 +43,13 @@ class PolynomialTestCase(unittest.TestCase):
         self.assertEqual(self.p1 + 10, Polynomial([1, 2, 13]))
 
     def test_rsum_number(self):
-        self.assertEqual(100 + self.p1, Polynomial([1, 2, 13]))
+        self.assertEqual(10 + self.p1, Polynomial([1, 2, 13]))
 
     def test_rsum_error(self):
         self.assertRaises(TypeError, self.p1.__radd__, "x")
 
     def test_sub_polynoms(self):
-        self.assertEqual(self.p1 - self.p2, Polynomial([-1, 3, -1, -7]))
+        self.assertEqual(self.p1 - self.p2, Polynomial([-1, 3, -1, 7]))
 
     def test_sub_number(self):
         self.assertEqual(self.p1 - 10, Polynomial([1, 2, -7]))
@@ -67,7 +67,7 @@ class PolynomialTestCase(unittest.TestCase):
         self.assertEqual(self.p1 * 10, Polynomial([10, 20, 30]))
 
     def test_mul_polynoms(self):
-        self.assertEqual(self.p1 * self.p2, Polynomial([1, 0, 2, 10, 29, 30]))
+        self.assertEqual(self.p1 * self.p2, Polynomial([1, 0, 2, -4, 1, -12]))
 
     def test_mul_error(self):
         self.assertRaises(TypeError, self.p1.__mul__, "x")
