@@ -25,7 +25,7 @@ class PolynomialTestCase(unittest.TestCase):
         self.assertRaises(TypeError, Polynomial, "errno")
 
     def test_repr(self):
-        self.assertEqual(self.p1.__repr__(), "Polynomial[1, 2, 3]")
+        self.assertEqual(self.p1.__repr__(), "Polynomial([1, 2, 3])")
 
     def test_str(self):
         self.assertEqual(self.p3.__str__(), "-x^3+2x-3")
@@ -35,6 +35,9 @@ class PolynomialTestCase(unittest.TestCase):
 
     def test_sum_polynoms(self):
         self.assertEqual(self.p1 + self.p2, Polynomial([1, -1, 5, -1]))
+
+    def test_rsum_polynoms(self):
+        self.assertEqual(self.p2 + self.p1, Polynomial([1, -1, 5, -1]))
 
     def test_sum_error(self):
         self.assertRaises(TypeError, self.p1.__add__, "x")
@@ -50,6 +53,9 @@ class PolynomialTestCase(unittest.TestCase):
 
     def test_sub_polynoms(self):
         self.assertEqual(self.p1 - self.p2, Polynomial([-1, 3, -1, 7]))
+
+    def test_rsub_polynoms(self):
+        self.assertEqual(self.p2 - self.p1, Polynomial([1, -3, 1, -7]))
 
     def test_sub_number(self):
         self.assertEqual(self.p1 - 10, Polynomial([1, 2, -7]))
